@@ -22,5 +22,8 @@ modules:
           type: anitya
           project-id: 382809
           url-template: https://github.com/horsicq/DIE-engine/releases/download/$version/die_sourcecode_$version.tar.gz
+      # TODO: Remove these on the next stable release
       - type: patch
-        path: patches/0001-linux-metadata-add-changelog-for-the-last-3-versions.patch
+        paths:
+          - patches/0001-linux-metadata-add-changelog-for-the-last-3-versions.patch # https://github.com/horsicq/DIE-engine/commit/09fb98c16e7a11c15d79bb22228f8d565fbb32ea
+          - patches/0002-linux-metadata-update-screenshots.patch # https://github.com/horsicq/DIE-engine/commit/46c39597cc94014c66c40b15977916ad5df06a4a
