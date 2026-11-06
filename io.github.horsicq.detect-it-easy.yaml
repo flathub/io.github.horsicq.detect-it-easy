@@ -4,6 +4,8 @@ runtime-version: '6.11'
 sdk: org.kde.Sdk
 command: die
 
+rename-desktop-file: die.desktop
+
 finish-args:
   - --device=dri
   - --share=ipc
@@ -13,11 +15,13 @@ finish-args:
 
 modules:
   - name: detect-it-easy
-    buildsystem: qmake
+    buildsystem: cmake-ninja
+    post-install:
+      - desktop-file-edit --remove-key Version /app/share/applications/die.desktop
     sources:
       - type: archive
-        url: https://github.com/horsicq/DIE-engine/releases/download/3.21/die_sourcecode_3.21.tar.gz
-        sha256: 01bc8b06f21e25523b9bb871509e10bbbd00dcb5da25c6d713d5078311585a22
+        url: https://github.com/horsicq/DIE-engine/releases/download/4.0.0/die_sourcecode_4.0.0.tar.gz
+        sha256: 3bd3cf72d6cccb1525841bd1a22d0e3e3623915c7cc29ab7491024a75595ce2f
         x-checker-data:
           type: anitya
           project-id: 382809
@@ -25,5 +29,4 @@ modules:
       # TODO: Remove these on the next stable release
       - type: patch
         paths:
-          - patches/0001-linux-metadata-add-changelog-for-the-last-3-versions.patch # https://github.com/horsicq/DIE-engine/commit/09fb98c16e7a11c15d79bb22228f8d565fbb32ea
-          - patches/0002-linux-metadata-update-screenshots.patch # https://github.com/horsicq/DIE-engine/commit/46c39597cc94014c66c40b15977916ad5df06a4a
+          - patches/0001-linux-metadata-add-changelog-for-the-last-4-versions.patch # https://github.com/horsicq/DIE-engine/commit/7337996645fcdf69233c2cc0ac7c46a4af85eae4
